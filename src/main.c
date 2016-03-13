@@ -37,21 +37,6 @@ static void inbox_received_callback(DictionaryIterator *iter, void *ctx)
     }
 }
 
-static void inbox_dropped_callback(AppMessageResult reason, void *ctx)
-{
-    APP_LOG(APP_LOG_LEVEL_ERROR, "Message dropped!");
-}
-
-static void outbox_failed_callback(DictionaryIterator *iter, AppMessageResult reason, void *ctx)
-{
-    APP_LOG(APP_LOG_LEVEL_ERROR, "Outbox send failed!");
-}
-
-static void outbox_sent_callback(DictionaryIterator *iter, void *ctx)
-{
-    APP_LOG(APP_LOG_LEVEL_INFO, "Outbox send success!");
-}
-
 static void update_time()
 {
     time_t temp = time(NULL); 
@@ -74,7 +59,6 @@ static void main_window_load(Window *window)
     GRect bounds = layer_get_bounds(window_layer);
 
     s_time_layer = text_layer_create(GRect(0, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
-
     text_layer_set_background_color(s_time_layer, GColorClear);
     text_layer_set_text_color(s_time_layer, GColorWhite);
     text_layer_set_text(s_time_layer, "00:00");
@@ -104,9 +88,6 @@ static void init()
     tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
 
     app_message_register_inbox_received(inbox_received_callback);
-    app_message_register_inbox_dropped(inbox_dropped_callback);
-    app_message_register_outbox_failed(outbox_failed_callback);
-    app_message_register_outbox_sent(outbox_sent_callback);
     app_message_open(8, 8);
 }
 
@@ -122,3 +103,4 @@ int main()
     app_event_loop();
     deinit();
 }
+
