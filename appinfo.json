@@ -1,0 +1,27 @@
+{
+    "appKeys": {
+        "KEY_VIBRATE": 0
+    },
+    "capabilities": [
+        ""
+    ],
+    "companyName": "Andr\u00e9 Lochotzke",
+    "enableMultiJS": true,
+    "longName": "vibeface",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "vibeface",
+    "targetPlatforms": [
+        "aplite",
+        "basalt",
+        "chalk"
+    ],
+    "uuid": "9e0d3f6c-82af-4731-9f97-55f0712a48d5",
+    "versionLabel": "0.1",
+    "watchapp": {
+        "watchface": true
+    }
+}
