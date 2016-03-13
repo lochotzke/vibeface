@@ -69,6 +69,12 @@ static void main_window_load(Window *window)
 
 static void main_window_unload(Window *window)
 {
+    if (s_vibe_timer) {
+        app_timer_cancel(s_vibe_timer);
+        s_vibe_timer = NULL;
+    }
+    vibes_cancel();
+
     text_layer_destroy(s_time_layer);
 }
 
